@@ -1,3 +1,2 @@
-# MERN Project
-## Expense Manager App
+Budget Manager MERN Application
 

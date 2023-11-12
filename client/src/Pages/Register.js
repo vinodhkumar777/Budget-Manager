@@ -12,13 +12,15 @@ const Register = () => {
   const submitHandler = async (values) => {
     try {
       setLoading(true);
-      const res=await axios.post("/api/v1/users/register", values);
+      const res=await axios.post("http://localhost:8080/api/v1/users/register", values);
+      console.log(res)
       message.success("Registeration Successfull");
       setLoading(false);
       navigate("/login");
     } catch (error) {
       setLoading(false);
-      message.error("something went wrong" + error.message);
+      console.log("registration")
+      message.error("Registration failed " + error.message);
     }
   };
 
@@ -26,7 +28,7 @@ const Register = () => {
     if (localStorage.getItem("user")) {
       navigate("/");
     }
-  }, [navigate]);
+  }, [navigate]); //This will get executed after the component gets rendered
   return (
     <>
       <div className="main_container2">

@@ -16,10 +16,10 @@ const Login = () => {
   const submitHandler = async (values) => {
     try {
       setLoading(true);
-      console.log("login sucess")
       const { data } = await axios.post("http://localhost:8080/api/v1/users/login", values);
       message.success("Login Successfully");
-      localStorage.setItem("user", JSON.stringify({ ...data.user }));
+      console.log(data)
+      localStorage.setItem("user", JSON.stringify({ ...data.user ,Password:""}));
       console.log(localStorage.getItem("user"));
       setLoading(false);
       navigate("/");

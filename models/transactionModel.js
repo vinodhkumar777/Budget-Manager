@@ -28,7 +28,7 @@ const transectionSchema= new mongoose.Schema({
     type:Date,
     required:[true,"Date is requred"]
   }
-},{timestamps:true})
+})
 
 
 const transactionModel=mongoose.model('transections',transectionSchema)

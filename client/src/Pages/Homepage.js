@@ -8,7 +8,6 @@ import {
 import Layout from "../Component/Layout/Layout.js";
 import { Modal, Form, Input, Select, message, Table, DatePicker } from "antd";
 import axios from "axios";
-import Loading from "../Component/Layout/Loading.js";
 import Analytic from "../Component/Layout/Analytic.js";
 import "./Homepage.css";
 const { RangePicker } = DatePicker;
@@ -118,6 +117,7 @@ const Homepage = () => {
     const getAlltransec = async () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
+        console.log(user)
         setLoading(true);
         const res = await axios.post("http://localhost:8080/api/v1/transections/getall", {
           userid: user._id,
@@ -157,11 +157,6 @@ const Homepage = () => {
 
   return (
     <Layout>
-      {loading && (
-        <div className="loading-container">
-          <Loading />
-        </div>
-      )}
       <div className="homepage">
         <div className="filters">
           <div className="frequency">
@@ -235,7 +230,7 @@ const Homepage = () => {
         <Form
           layout="vertical"
           onFinish={handleSubmit}
-          initialValues={editable}
+          initialValues={editable} 
         >
           <Form.Item label="Amount" name="amount">
             <Input type="text" />
